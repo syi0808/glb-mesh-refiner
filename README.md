@@ -26,3 +26,15 @@ The final three arguments are the source-UV geometric envelope limit in world un
 - The requested face count is a target; safety constraints can stop early.
 
 See `docs/uv-envelope.md`, `docs/uv-seam-collapse.md`, and `docs/references.md` for implementation details and sources.
+
+
+## Optional Blender-free texture atlas bake
+
+The experimental `glb_atlas_bake` target uses pinned meshoptimizer v1.3, xatlas, TinyBVH and stb to simplify one triangle primitive, build a new UV atlas, and transfer embedded base-color and metallic-roughness textures on the CPU. It is a project-specific prototype, not a Blender/Cycles-equivalent production baker. See [docs/standalone-baker.md](docs/standalone-baker.md) for supported GLBs, build requirements, upstream licenses, tests, and limitations.
+
+```sh
+make glb_atlas_bake
+./glb_atlas_bake source.glb baked.glb bake-report.txt 4000 1024 0.02 25
+./glb_atlas_bake --self-test
+make test
+```
