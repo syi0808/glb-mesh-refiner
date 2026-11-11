@@ -3,3 +3,4 @@ tests/test_envelope
 __pycache__/
 *.py[cod]
 output/
+glb_atlas_bake
